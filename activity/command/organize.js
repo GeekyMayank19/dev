@@ -16,7 +16,6 @@ let path = require("path")
 function orgfn(src){
     // console.log("tree command exicuted with path"+src);
     let orgFilePath = path.join(src,"organisedFile");
-    if(fs.existsSync)
     fs.mkdirSync(orgFilePath);
     let media = path.join(orgFilePath,"media")
     let archives = path.join(orgFilePath,"archives")
