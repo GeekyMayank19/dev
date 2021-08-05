@@ -4,7 +4,7 @@ function treefn(src){
     let noOfFile = fs.readdirSync(src);
     for(let i=0;i<noOfFile.length;i++){
         let fileName = noOfFile[i];
-        console.log("-->",fileName)
+        console.log("|__",fileName)
     }
 }
 module.exports={
