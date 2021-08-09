@@ -86,13 +86,27 @@ function getAllRecord(html){
 
         // console.log(pname,run,ball,four,six,sr);
         //checking file is exsting or not
-        let obj = {
-            table: []
-        }
-      
-    
-            obj.table.push({
-                MyTeam:tname1,
+           
+            fileName = path.join(dir1,`${pname}.json`);
+
+            if(fs.existsSync(fileName)){
+                let content = JSON.parse(fs.readFileSync(fileName));
+                content.push({
+                    MyTeam:tname1,
+                    name:pname,
+                    venue:vanue,
+                    date:date,
+                    opponetTeam:tname2,
+                    run:run,
+                    balls: ball,
+                    fours: four,
+                    sixs: six,
+                    SR: sr
+                })
+                fs.writeFileSync(fileName,JSON.stringify(content));
+            }else{
+                let content = [{
+                    MyTeam:tname1,
                 name:pname,
                 venue:vanue,
                 date:date,
@@ -102,12 +116,10 @@ function getAllRecord(html){
                 fours: four,
                 sixs: six,
                 SR: sr
-            });
+                }];
 
-            var json = JSON.stringify(obj);
-            fileName = path.join(dir1,`${pname}.json`)
-            fs.writeFileSync(fileName,json)
-            
+                fs.writeFileSync(fileName,JSON.stringify(content));
+            }   
         
 
     }
